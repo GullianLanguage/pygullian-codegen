@@ -1,0 +1,18 @@
+import std.io
+import std.err
+import std.fmt
+
+fun divide(a: int, b: int) : err.Result[int, str] {
+    if b == 0 {
+        return err.Result[int, str] { "ZeroDivisionError: Divide by zero" }
+    }
+
+    return err.Result[int, str] { a / b }
+}
+
+fun main() : int {
+    let result = divide(100, 0)
+    let ok = result.unwrap[int, str]()
+
+    io.puts(ok.to_string())
+}
